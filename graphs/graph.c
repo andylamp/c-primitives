@@ -43,7 +43,7 @@ initialze_graph(int initsize) {
   if( ((gstruct = calloc(1, sizeof(pgraph))) == NULL) ||
        ((gstruct->vdist = calloc(size, sizeof(int))) == NULL) ||
        ((gstruct->vprev = calloc(size, sizeof(int))) == NULL) ||
-       ((gstruct->vertices = calloc(size, sizeof(gsvertex))) == NULL) )
+       ((gstruct->vertices = calloc(size, sizeof(gsvertex *))) == NULL) )
       {clear_graph(gstruct, NULL); return(NULL);}
 
    /* initialize the vertex number to zero */
