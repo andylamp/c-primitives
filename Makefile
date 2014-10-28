@@ -64,7 +64,7 @@ clean:
 		    $(GRAPHDIR)/*~ $(GRAPHDIR)/~* \
 		    $(QUEUESDIR)/*~ $(QUEUESDIR)/~* \
 		    $(LISTSDIR)/*~ $(LISTSDIR)/~* \
-	        $(HEAPSDIR)/*~ $(HEAPSDIR)/~* \
+		    $(HEAPSDIR)/*~ $(HEAPSDIR)/~* \
 		    $(TESTSDIR)/*~ $(TESTSDIR)/~* \
 		    test_dijkstra test_pqueue test_graph test_linkedlist test_linkedlistd test_linkedlistdc
     
