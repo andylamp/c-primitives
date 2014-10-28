@@ -29,7 +29,7 @@ list_remove(lnode **head, int pos, void * (*cleanup_fnc)(void *)) {
    while(*trav != NULL && i < pos-1) 
       {trav = &((*trav)->next); i++;}
    /* if we didn't have that many elements */
-   if((*trav)->next == NULL) {return(FAIL);}
+   if(i != (pos-1) || (*trav) == NULL) {return(FAIL);}
    /* actually erase the element */
    tmp = *trav;
    *trav = (*trav)->next;
@@ -46,15 +46,22 @@ list_remove(lnode **head, int pos, void * (*cleanup_fnc)(void *)) {
 /* pop the first element */
 void *
 list_pop(lnode **head) {
-   lnode *n = *head;
-   *head = (*head)->next;
-   return(n);
+   lnode *n = NULL;
+   void *ptr = NULL;
+   /* check if we have a valid head */
+   if(head == NULL || *head == NULL)
+      {return(NULL);}
+   n = *head;  
+   ptr = n->data; 
+   free(n); 
+   *head = (*head)->next; 
+   return(ptr);
 }
 
 /* peak the first element w/o removing it */
 void *
 list_peak(lnode **head) 
-   {return(*head);}
+   {return((head != NULL && *head != NULL) ? (*head)->data : NULL);}
 
 /* free up the resources */
 int
@@ -70,7 +77,7 @@ list_destroy(lnode **head, void * (*cleanup_fnc)(void *)) {
       if(cleanup_fnc) 
          {(*head)->data = (*cleanup_fnc)(*head);}
       else 
-         {free((*head)->data);}
+         {if((*head)->data) {free((*head)->data);}}
       free(*head);
       *head = trav;
    }
