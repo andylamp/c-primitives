@@ -94,7 +94,8 @@ pq_decrease_priority(pq_ptr pq, void *itemdat, int new_item_p) {
       {if(itemdat == pq->pq_link[i].item) {break;}}
    
    /* not in queue */
-   if(i == pq->n) {printf("Alloc is: %d, i is: %d", pq->allocs, i); return(FAIL);}
+   if(i == pq->n) 
+      {dbg(printf("Alloc is: %d, i is: %d", pq->allocs, i);); return(FAIL);}
   
    /* now adjust it */
    if(pq->pq_link[i].item_p < new_item_p)
