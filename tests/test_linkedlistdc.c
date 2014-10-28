@@ -37,7 +37,8 @@ main(int argc, char **argv) {
    }
    trav = lptr;
    for(i = 0; i < 10; i++) {
-     printf("\n !! Element no %d with val: %d (prev val: %d)", i, *((int *)trav->data), *(int *)(trav->prev->data));
+     printf("\n !! Element no %d with val: %d (prev val: %d)", 
+           i, *((int *)trav->data), *(int *)(trav->prev->data));
      trav = trav->next; 
    }
 
@@ -66,7 +67,8 @@ main(int argc, char **argv) {
    listdc_remove(head, 2, cleanup_fnc_ptr);
    trav = lptr;
    for(i = 0; i < iter-2; i++) {
-     printf("\n !! Element no %d with val: %d", i, *((int *)trav->data));
+     printf("\n !! Element no %d with val: %d (prev val: %d)", 
+           i, *((int *)trav->data), *(int *)(trav->prev->data));
      trav = trav->next; 
    }   
    printf("\n\n");

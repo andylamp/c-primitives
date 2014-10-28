@@ -19,6 +19,10 @@ typedef struct _ldcnode {
 ldcnode **
 listdc_add(ldcnode **head, void *data);
 
+/* append a node to the end of the list */
+ldcnode **
+listdc_append(ldcnode **head, void *data);
+
 /* remove from the list in specific position */
 int
 listdc_remove(ldcnode **head, int pos, void * (*cleanup_fnc)(void *));

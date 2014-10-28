@@ -7,22 +7,20 @@
 #include <unistd.h>
 
 #include "consts.h"
-#include "linkedlistd.h"
+#include "linkedlistdc.h"
 
 /* fibonacci heap node */
 typedef struct _fibnode {
    int degree;
    int marked;
-   //struct _fibnode *p;
-   //struct _fibnode *child;
-   ldnode *p;
-   ldnode *child;
+   ldcnode *p;
+   ldcnode *child;
 } fibnode;
 
 /* fibonacci heap structure */
 typedef struct _fibheap {
    int nodes;
-   ldnode *min_node;
+   ldcnode **min_node;
 } fibheap;
 
 /* insert to the heap */

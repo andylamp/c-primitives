@@ -12,13 +12,9 @@ listdc_add(ldcnode **head, void *data) {
     /* allocate the node */
     if((tnode = (calloc(1, sizeof(*tnode)))) == NULL)
         {return(NULL);}
-    /* update the prev */
-    //tnode->prev = ;
     /* update the data */
-    tnode->data = data;
-    /* update the next */
-    //tnode->next = *head;
-    /* head already exists, update the prev */
+    tnode->data = data;;
+    /* head already exists, update */
     if(*head != NULL) {
        tnode->prev = (*head)->prev;
        tnode->next = (*head); 
@@ -28,6 +24,30 @@ listdc_add(ldcnode **head, void *data) {
       {tnode->prev = tnode; tnode->next = tnode;}
     /* finally update the head of the list */
     *head = tnode;
+    /* return it */
+    return(head);
+}
+
+/* append a node to the end of the list */
+ldcnode **
+listdc_append(ldcnode **head, void *data) {
+    ldcnode *tnode = NULL;
+    /* parameter check */
+    if(data == NULL)
+        {return(NULL);}
+    /* allocate the node */
+    if((tnode = (calloc(1, sizeof(*tnode)))) == NULL)
+        {return(NULL);}
+    /* update the data */
+    tnode->data = data;
+    /* head already exists, update */
+    if(*head != NULL) {
+       tnode->prev = (*head)->prev;;
+       tnode->next = (*head);
+       (*head)->prev = tnode; 
+    }
+    else
+      {tnode->prev = tnode; tnode->next = tnode; *head = tnode;}
     /* return it */
     return(head);
 }
